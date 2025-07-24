@@ -68,12 +68,12 @@ export function Footer() {
                 modernas y IA.
               </p>
 
-              <div className="flex items-center gap-2 text-gray-500 mb-2">
+              <div className="flex items-center gap-2 text-gray-300 mb-2">
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm">México, CDMX</span>
               </div>
 
-              <div className="flex items-center gap-2 text-gray-500">
+              <div className="flex items-center gap-2 text-gray-300">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                 <span className="text-sm">Disponible para proyectos</span>
               </div>
@@ -165,7 +165,7 @@ export function Footer() {
           <div className="container mx-auto px-6 py-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               {/* Copyright */}
-              <div className="text-gray-500 text-sm">
+              <div className="text-gray-300 text-sm">
                 © {currentYear} MaxitoDev. Todos los derechos reservados.
               </div>
 
@@ -208,7 +208,7 @@ export function Footer() {
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 whileHover={{ y: -5, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300 text-sm bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full shadow-lg border border-white/10"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 text-sm bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full shadow-lg border border-white/10"
                 style={{
                   boxShadow: "0 0 15px rgba(255, 255, 255, 0.1)",
                 }}

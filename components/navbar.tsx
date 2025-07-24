@@ -372,6 +372,9 @@ export function Navbar() {
             <button
               onClick={toggleMobileMenu}
               className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors duration-200 relative"
+              aria-label={isMobileMenuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <div className="w-6 h-6 flex flex-col justify-center items-center">
                 <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} />
@@ -385,7 +388,10 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10">
+        <div 
+          id="mobile-menu"
+          className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10"
+        >
           <div className="px-6 py-4 space-y-2">
             {navItems.map((item) => (
               <Link 

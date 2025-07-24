@@ -8,7 +8,7 @@ import { useRef, useEffect, useState } from "react"
 
 export function HeroSection() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+  const isInView = useInView(ref, { once: true, margin: "-10%" }) // Trigger animations earlier
   const { scrollY } = useScroll()
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
@@ -54,6 +54,7 @@ export function HeroSection() {
           loop
           muted
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover md:object-center object-[center_20%]"
           style={{
             filter: "brightness(1) contrast(1.2)",
@@ -105,10 +106,11 @@ export function HeroSection() {
       >
         {/* Badge profesional */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 5 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.1 }} // Minimal duration, no delay for immediate render
           className="inline-flex items-center gap-2 md:gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 md:px-6 md:py-3 mb-8 md:mb-12"
+          style={{ willChange: 'transform, opacity' }}
         >
           <Code2 className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
           <span className="text-xs md:text-sm text-white/90 font-medium tracking-wide">Full Stack Developer</span>
@@ -117,11 +119,17 @@ export function HeroSection() {
         {/* Título principal más limpio */}
         <motion.div
           className="mb-6 md:mb-8"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ opacity: 0, y: 5 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, delay: 0 }} // Removed delay for faster LCP
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-2 md:mb-4">
+          <h1 
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-2 md:mb-4"
+            style={{ 
+              fontSize: 'clamp(2.25rem, 8vw, 6rem)', // Ensures explicit font-size is set
+              willChange: 'transform, opacity' // Optimize for animations
+            }}
+          >
             <span className="text-white block">Hola, soy</span>
             <span 
               className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent block"
@@ -133,10 +141,14 @@ export function HeroSection() {
 
         {/* Subtítulo elegante */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          initial={{ opacity: 0, y: 5 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, delay: 0 }} // Removed delay for faster LCP
           className="text-base md:text-lg lg:text-xl text-white/80 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed px-4"
+          style={{ 
+            willChange: 'transform, opacity',
+            fontSize: 'clamp(1rem, 2.5vw, 1.25rem)' // Explicit font-size for LCP optimization
+          }}
         >
           Desarrollo soluciones web modernas y experiencias digitales que conectan 
           <span className="text-cyan-400"> tecnología</span> con 
@@ -228,6 +240,8 @@ export function HeroSection() {
               }
             }}
             onClick={() => handleSmoothScroll("sobre-mi-servicios")}
+            aria-label="Desplazarse hacia abajo para ver más contenido"
+            title="Desplazarse hacia abajo"
           >
             {/* Flecha hacia abajo */}
             <motion.svg

@@ -1,0 +1,179 @@
+{
+  "timestamp": "2025-07-24T07:05:35.536Z",
+  "summary": {
+    "totalImages": 25,
+    "totalSize": "12MB",
+    "categories": {
+      "critical": 0,
+      "projects": 0,
+      "icons": 0,
+      "backgrounds": 0,
+      "other": 25
+    }
+  },
+  "categorized": {
+    "critical": [],
+    "projects": [],
+    "icons": [],
+    "backgrounds": [],
+    "other": [
+      {
+        "path": "icons\\express.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\express.png",
+        "size": 23,
+        "category": "other"
+      },
+      {
+        "path": "icons\\javascript.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\javascript.png",
+        "size": 22,
+        "category": "other"
+      },
+      {
+        "path": "icons\\mongodb.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\mongodb.png",
+        "size": 18,
+        "category": "other"
+      },
+      {
+        "path": "icons\\nextjs.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\nextjs.png",
+        "size": 25,
+        "category": "other"
+      },
+      {
+        "path": "icons\\nodejs.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\nodejs.png",
+        "size": 38,
+        "category": "other"
+      },
+      {
+        "path": "icons\\openai.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\openai.png",
+        "size": 46,
+        "category": "other"
+      },
+      {
+        "path": "icons\\python.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\python.png",
+        "size": 17,
+        "category": "other"
+      },
+      {
+        "path": "icons\\react.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\react.png",
+        "size": 38,
+        "category": "other"
+      },
+      {
+        "path": "icons\\tailwind.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\tailwind.png",
+        "size": 17,
+        "category": "other"
+      },
+      {
+        "path": "icons\\typescript.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\typescript.png",
+        "size": 33,
+        "category": "other"
+      },
+      {
+        "path": "icons\\vite.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\icons\\vite.png",
+        "size": 39,
+        "category": "other"
+      },
+      {
+        "path": "images\\gaming-setup-bg.jpg",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\images\\gaming-setup-bg.jpg",
+        "size": 147,
+        "category": "other"
+      },
+      {
+        "path": "images\\jobsection.jpg",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\images\\jobsection.jpg",
+        "size": 40,
+        "category": "other"
+      },
+      {
+        "path": "images\\maximo-profile.jpg",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\images\\maximo-profile.jpg",
+        "size": 862,
+        "category": "other"
+      },
+      {
+        "path": "images\\photo-2.jpeg",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\images\\photo-2.jpeg",
+        "size": 294,
+        "category": "other"
+      },
+      {
+        "path": "placeholder-logo.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\placeholder-logo.png",
+        "size": 1,
+        "category": "other"
+      },
+      {
+        "path": "placeholder-user.jpg",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\placeholder-user.jpg",
+        "size": 2,
+        "category": "other"
+      },
+      {
+        "path": "placeholder.jpg",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\placeholder.jpg",
+        "size": 1,
+        "category": "other"
+      },
+      {
+        "path": "projects\\calibreconductor.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\projects\\calibreconductor.png",
+        "size": 78,
+        "category": "other"
+      },
+      {
+        "path": "projects\\donauam.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\projects\\donauam.png",
+        "size": 2514,
+        "category": "other"
+      },
+      {
+        "path": "projects\\gestorescolar.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\projects\\gestorescolar.png",
+        "size": 1043,
+        "category": "other"
+      },
+      {
+        "path": "projects\\maxcomgames.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\projects\\maxcomgames.png",
+        "size": 2828,
+        "category": "other"
+      },
+      {
+        "path": "projects\\perfiluam.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\projects\\perfiluam.png",
+        "size": 1612,
+        "category": "other"
+      },
+      {
+        "path": "projects\\simposio.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\projects\\simposio.png",
+        "size": 2291,
+        "category": "other"
+      },
+      {
+        "path": "projects\\sistemafinanciero.png",
+        "fullPath": "C:\\Users\\maxsa\\Documents\\MaxitoDev\\WebSite\\public\\projects\\sistemafinanciero.png",
+        "size": 159,
+        "category": "other"
+      }
+    ]
+  },
+  "suggestions": [],
+  "nextSteps": [
+    "Instalar sharp: npm install sharp",
+    "Implementar componente OptimizedImage",
+    "Actualizar components con lazy loading inteligente",
+    "Considerar CDN para optimización automática"
+  ]
+}

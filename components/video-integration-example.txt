@@ -1,0 +1,15 @@
+// Si quieres usar el componente VideoWithPoster, descomenta estas líneas
+// y comenta la etiqueta video actual en hero-section.tsx
+
+/*
+import { VideoWithPoster } from "@/components/ui/video-with-poster"
+
+// En el componente HeroSection:
+<VideoWithPoster
+  src="/yo/1.webm"
+  className="w-full h-full object-cover md:object-center object-[center_20%]"
+  style={{
+    filter: "brightness(1) contrast(1.2)",
+  }}
+/>
+*/

@@ -1,12 +1,20 @@
-"use client"
-
 import { motion } from "framer-motion"
 import { ExternalLink, Github, Folder, ArrowUpRight, Calendar } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import { OptimizedImage } from "@/components/ui/optimized-image"
+import { useIntersectionObserver, useImagePreloader } from "@/hooks/use-intersection-observer"
 
 export function ProjectsSection() {
+  // Precargar imágenes críticas (las primeras 3)
+  const criticalImages = [
+    '/projects/maxcomgames.png',
+    '/projects/perfiluam.png', 
+    '/projects/simposio.png'
+  ]
+  useImagePreloader(criticalImages)
 
   const projects = [
     {
@@ -319,10 +327,17 @@ export function ProjectsSection() {
               >
                 {/* Image Container */}
                 <div className="aspect-video bg-gray-900 relative overflow-hidden">
-                  <img
+                  <OptimizedImage
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
+                    width={400}
+                    height={225}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    quality={index < 3 ? 85 : 70}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading={index < 3 ? 'eager' : 'lazy'}
+                    priority={index < 2}
+                    placeholder="blur"
                   />
 
                   {/* Overlay */}

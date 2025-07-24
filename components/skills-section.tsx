@@ -305,6 +305,11 @@ export function SkillsSection() {
             style={{
               filter: "brightness(1) contrast(1.2) saturate(1.1)",
             }}
+            priority={false}
+            quality={75}
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
         </div>
 
@@ -383,6 +388,11 @@ export function SkillsSection() {
                                 style={{
                                   filter: `drop-shadow(0 0 10px ${skill.color}40)`,
                                 }}
+                                quality={80}
+                                sizes="(max-width: 768px) 32px, (max-width: 1024px) 48px, 64px"
+                                loading="lazy"
+                                placeholder="blur"
+                                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjMjEyMTIxIi8+Cjwvc3ZnPgo="
                               />
                             )}
                           </div>
@@ -418,15 +428,15 @@ export function SkillsSection() {
                   </button>
 
                   {/* Progress Dots */}
-                  <div className="flex space-x-1.5 xs:space-x-2" role="tablist" aria-label="Categorías de habilidades">
+                  <div className="flex space-x-2" role="tablist" aria-label="Categorías de habilidades">
                     {skillCategories.map((cat, index) => (
                       <button
                         key={index}
                         onClick={() => navigateToCategory(index)}
-                        className={`w-1.5 h-1.5 xs:w-2 xs:h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 ${
+                        className={`min-w-[44px] min-h-[44px] p-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 flex items-center justify-center ${
                           index === currentCategory 
-                            ? 'bg-green-400 shadow-lg' 
-                            : 'bg-white/30 hover:bg-white/50'
+                            ? 'bg-green-400/20 hover:bg-green-400/30' 
+                            : 'bg-white/10 hover:bg-white/20'
                         }`}
                         style={index === currentCategory ? {
                           boxShadow: "0 0 10px rgba(0, 255, 136, 0.6)"
@@ -434,7 +444,18 @@ export function SkillsSection() {
                         aria-label={`Ir a categoría ${cat.title}`}
                         role="tab"
                         aria-selected={index === currentCategory}
-                      />
+                      >
+                        <div
+                          className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                            index === currentCategory 
+                              ? 'bg-green-400 shadow-lg' 
+                              : 'bg-white/50'
+                          }`}
+                          style={index === currentCategory ? {
+                            boxShadow: "0 0 8px rgba(0, 255, 136, 0.6)"
+                          } : {}}
+                        />
+                      </button>
                     ))}
                   </div>
 

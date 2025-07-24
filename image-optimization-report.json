@@ -1,0 +1,240 @@
+{
+  "timestamp": "2025-07-24T07:01:06.178Z",
+  "images": [
+    {
+      "path": "icons\\express.png",
+      "size": 23,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\javascript.png",
+      "size": 22,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\mongodb.png",
+      "size": 18,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\nextjs.png",
+      "size": 25,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\nodejs.png",
+      "size": 38,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\openai.png",
+      "size": 46,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\python.png",
+      "size": 17,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\react.png",
+      "size": 38,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\tailwind.png",
+      "size": 17,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\typescript.png",
+      "size": 33,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "icons\\vite.png",
+      "size": 39,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "images\\gaming-setup-bg.jpg",
+      "size": 147,
+      "extension": ".jpg",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "images\\jobsection.jpg",
+      "size": 40,
+      "extension": ".jpg",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "images\\maximo-profile.jpg",
+      "size": 862,
+      "extension": ".jpg",
+      "needsOptimization": true,
+      "recommendations": [
+        "Comprimir imagen",
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "images\\photo-2.jpeg",
+      "size": 294,
+      "extension": ".jpeg",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "placeholder-logo.png",
+      "size": 1,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "placeholder-user.jpg",
+      "size": 2,
+      "extension": ".jpg",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "placeholder.jpg",
+      "size": 1,
+      "extension": ".jpg",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "projects\\calibreconductor.png",
+      "size": 78,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "projects\\donauam.png",
+      "size": 2514,
+      "extension": ".png",
+      "needsOptimization": true,
+      "recommendations": [
+        "Comprimir imagen",
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "projects\\gestorescolar.png",
+      "size": 1043,
+      "extension": ".png",
+      "needsOptimization": true,
+      "recommendations": [
+        "Comprimir imagen",
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "projects\\maxcomgames.png",
+      "size": 2828,
+      "extension": ".png",
+      "needsOptimization": true,
+      "recommendations": [
+        "Comprimir imagen",
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "projects\\perfiluam.png",
+      "size": 1612,
+      "extension": ".png",
+      "needsOptimization": true,
+      "recommendations": [
+        "Comprimir imagen",
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "projects\\simposio.png",
+      "size": 2291,
+      "extension": ".png",
+      "needsOptimization": true,
+      "recommendations": [
+        "Comprimir imagen",
+        "Convertir a WebP/AVIF"
+      ]
+    },
+    {
+      "path": "projects\\sistemafinanciero.png",
+      "size": 159,
+      "extension": ".png",
+      "needsOptimization": false,
+      "recommendations": [
+        "Convertir a WebP/AVIF"
+      ]
+    }
+  ],
+  "recommendations": [
+    "Optimizar 6 imágenes grandes",
+    "Convertir 25 imágenes a formatos modernos"
+  ]
+}
