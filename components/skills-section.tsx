@@ -483,18 +483,6 @@ export function SkillsSection() {
             </div>
           </button>
         </div>
-
-        {/* Instructions for desktop */}
-        {!isMobile && (
-          <div className="absolute top-4 right-4 z-40 bg-black/50 backdrop-blur-md border border-green-400/30 rounded-lg px-4 py-2">
-            <p className="text-white/70 text-sm">
-              Usa teclado o botones para navegar
-            </p>
-            <p className="text-white/50 text-xs mt-1">
-              Espacio: pausar/reanudar • Cambio automático cada 4s (activo)
-            </p>
-          </div>
-        )}
       </div>
     </section>
   )
