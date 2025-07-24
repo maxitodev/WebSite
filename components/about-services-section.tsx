@@ -187,6 +187,7 @@ export function AboutServicesSection() {
 
       {/* SECCIÓN SOBRE MÍ */}
       <motion.div
+        id="sobre-mi"
         ref={aboutRef}
         className="sticky top-0 min-h-screen flex items-center justify-center"
         style={{
@@ -385,6 +386,7 @@ export function AboutServicesSection() {
 
       {/* SECCIÓN SERVICIOS */}
       <motion.div
+        id="servicios"
         ref={servicesRef}
         className="sticky top-0 min-h-screen flex items-center justify-center"
         style={{

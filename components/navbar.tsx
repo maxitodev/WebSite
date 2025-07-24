@@ -51,6 +51,45 @@ export function Navbar() {
     }
   }
 
+  // Manual section detection based on scroll position
+  const detectActiveSection = () => {
+    const sections = ["inicio", "sobre-mi", "servicios", "habilidades", "proyectos", "contacto"]
+    const scrollPosition = window.scrollY
+    const windowHeight = window.innerHeight
+    const viewportCenter = scrollPosition + windowHeight / 2
+
+    for (let i = 0; i < sections.length; i++) {
+      const sectionId = sections[i]
+      const element = document.getElementById(sectionId)
+      
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        const elementTop = scrollPosition + rect.top
+        const elementBottom = elementTop + rect.height
+        
+        // Special handling for sticky sections (sobre-mi and servicios)
+        if (sectionId === "sobre-mi" || sectionId === "servicios") {
+          // Check if the element is visible in the viewport
+          const isVisible = rect.top < windowHeight && rect.bottom > 0
+          if (isVisible && viewportCenter >= elementTop && viewportCenter <= elementBottom) {
+            if (activeSection !== sectionId) {
+              updateActiveSection(sectionId)
+            }
+            return
+          }
+        } else {
+          // Standard detection for other sections
+          if (viewportCenter >= elementTop && viewportCenter <= elementBottom) {
+            if (activeSection !== sectionId) {
+              updateActiveSection(sectionId)
+            }
+            return
+          }
+        }
+      }
+    }
+  }
+
   useEffect(() => {
     const nav = navRef.current
     const logo = logoRef.current
@@ -102,8 +141,8 @@ export function Navbar() {
         if (element) {
           const trigger = ScrollTrigger.create({
             trigger: element,
-            start: "top center",
-            end: "bottom center",
+            start: "top 60%",
+            end: "bottom 40%",
             invalidateOnRefresh: true,
             onEnter: () => {
               updateActiveSection(sectionId)
@@ -121,10 +160,31 @@ export function Navbar() {
     const refreshTimeout = setTimeout(() => {
       initSectionTriggers()
       ScrollTrigger.refresh()
+      
+      // Additional refresh after a short delay for dynamic content
+      setTimeout(() => {
+        ScrollTrigger.refresh()
+      }, 1000)
     }, 500) // Increased delay for ScrollSmoother initialization
+
+    // Manual scroll listener as backup
+    const handleScroll = () => {
+      detectActiveSection()
+    }
+
+    // Add scroll listener with throttling
+    let scrollTimeout: NodeJS.Timeout
+    const throttledScroll = () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(handleScroll, 100)
+    }
+
+    window.addEventListener('scroll', throttledScroll, { passive: true })
 
     return () => {
       clearTimeout(refreshTimeout)
+      if (scrollTimeout) clearTimeout(scrollTimeout)
+      window.removeEventListener('scroll', throttledScroll)
       scrollTrigger.kill()
       sectionTriggers.forEach(trigger => trigger.kill())
     }
@@ -218,7 +278,6 @@ export function Navbar() {
                 <span className="text-2xl font-black tracking-tight text-white relative">
                   Maxito
                   <span className="text-cyan-400">Dev</span>
-                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-500" />
                 </span>
               </div>
             </Link>
@@ -347,3 +406,4 @@ export function Navbar() {
     </nav>
   )
 }
+
