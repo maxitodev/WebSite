@@ -92,7 +92,7 @@ export function AboutServicesSection() {
     {
       title: "Chatbot con IA",
       description: "Chatbots inteligentes integrados con OpenAI para atención al cliente",
-      icon: <Bot className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />,
+      icon: <Bot />,
       price: "Desde $100",
       delivery: "5-7 días",
       features: ["OpenAI Integration", "Conversaciones Naturales", "Personalizable", "Multi-plataforma"],
@@ -104,7 +104,7 @@ export function AboutServicesSection() {
     {
       title: "Aplicaciones Web",
       description: "Aplicaciones web modernas con React, Next.js y tecnologías actuales",
-      icon: <Globe className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />,
+      icon: <Globe />,
       price: "Desde $150",
       delivery: "7-14 días",
       features: ["React/Next.js", "Responsive Design", "SEO Optimizado", "Performance"],
@@ -116,7 +116,7 @@ export function AboutServicesSection() {
     {
       title: "Dashboard Empresarial",
       description: "Dashboards interactivos para visualización de datos y métricas",
-      icon: <BarChart3 className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />,
+      icon: <BarChart3 />,
       price: "Desde $200",
       delivery: "10-15 días",
       features: ["Visualización de Datos", "Gráficos Interactivos", "Tiempo Real", "Exportación"],
@@ -128,7 +128,7 @@ export function AboutServicesSection() {
     {
       title: "Backend & APIs",
       description: "APIs robustas con Node.js, Express y bases de datos modernas",
-      icon: <Server className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8" />,
+      icon: <Server />,
       price: "Desde $120",
       delivery: "7-12 días",
       features: ["Node.js/Express", "MongoDB/SQL", "Autenticación", "Documentación"],
@@ -486,8 +486,10 @@ export function AboutServicesSection() {
                       }}
                       transition={{ duration: 0.4 }}
                     >
-                      <div className={`w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-2xl bg-gradient-to-r ${service.gradient} shadow-lg flex items-center justify-center shrink-0`}>
-                        {service.icon}
+                      <div className={`w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-2xl bg-gradient-to-r ${service.gradient} shadow-lg flex items-center justify-center`}>
+                        <div className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 flex items-center justify-center text-white">
+                          {service.icon}
+                        </div>
                       </div>
                     </motion.div>
 
@@ -540,7 +542,5 @@ export function AboutServicesSection() {
         </div>
       </motion.div>
     </section>
-  )
-}
   )
 }
