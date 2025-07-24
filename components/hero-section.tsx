@@ -56,7 +56,7 @@ export function HeroSection() {
           playsInline
           className="w-full h-full object-cover md:object-center object-[center_20%]"
           style={{
-            filter: "brightness(0.3) contrast(1.2)",
+            filter: "brightness(1) contrast(1.2)",
           }}
         >
           <source src="/yo/1.webm" type="video/webm" />
