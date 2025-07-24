@@ -316,55 +316,55 @@ export function SkillsSection() {
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={category.title}
-              className={`skill-category flex items-center justify-center h-full px-4 sm:px-6 ${
+              className={`skill-category flex items-center justify-center h-full px-2 xs:px-4 sm:px-6 ${
                 isMobile ? (categoryIndex === currentCategory ? 'block' : 'hidden') : ''
               }`}
               style={{ width: isMobile ? '100vw' : undefined }}
             >
               <div className="container mx-auto text-center max-w-6xl">
                 {/* Section Header */}
-                <div className="mb-8 sm:mb-16">
-                  <div className="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md border border-green-400/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-6 sm:mb-8 shadow-2xl"
+                <div className="mb-6 xs:mb-8 sm:mb-16">
+                  <div className="inline-flex items-center gap-1.5 xs:gap-2 bg-black/50 backdrop-blur-md border border-green-400/50 rounded-full px-3 py-1.5 xs:px-4 xs:py-2 sm:px-6 sm:py-3 mb-4 xs:mb-6 sm:mb-8 shadow-2xl"
                     style={{
                       boxShadow: "0 0 30px rgba(0, 255, 136, 0.4)",
                     }}
                   >
-                    <Code className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" />
-                    <span className="text-xs sm:text-sm text-white font-medium">Stack Tecnológico</span>
+                    <Code className="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 text-green-400" />
+                    <span className="text-xs xs:text-xs sm:text-sm text-white font-medium">Stack Tecnológico</span>
                   </div>
 
-                  <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6 text-white leading-tight">
+                  <h2 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-3 xs:mb-4 sm:mb-6 text-white leading-tight px-2">
                     {category.title}
                   </h2>
 
-                  <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xl md:max-w-2xl mx-auto font-light px-4">
-                    {categoryIndex === 0 && "Tecnologías frontend para crear interfaces modernas y responsivas"}
-                    {categoryIndex === 1 && "Herramientas backend para desarrollar APIs robustas y escalables"}
-                    {categoryIndex === 2 && "Herramientas y tecnologías de inteligencia artificial"}
+                  <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-300 max-w-xs xs:max-w-xl md:max-w-2xl mx-auto font-light px-3 xs:px-4">
+                    {categoryIndex === 0 && "Tecnologías frontend para crear interfaces modernas"}
+                    {categoryIndex === 1 && "Herramientas backend para APIs robustas"}
+                    {categoryIndex === 2 && "Herramientas y tecnologías de IA"}
                   </p>
                 </div>
 
                 {/* Skills Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap md:justify-center gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto px-4">
+                <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap md:justify-center gap-2 xs:gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto px-2 xs:px-4">
                   {category.skills.map((skill, index) => (
                     <div
                       key={skill.name}
                       className="group relative"
                     >
-                      <div className="relative bg-black/40 backdrop-blur-md border-2 border-white/20 hover:border-white/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all duration-500 w-full md:min-w-[120px] shadow-2xl hover:shadow-3xl">
+                      <div className="relative bg-black/40 backdrop-blur-md border-2 border-white/20 hover:border-white/40 rounded-lg xs:rounded-xl sm:rounded-2xl p-2 xs:p-4 sm:p-6 transition-all duration-500 w-full md:min-w-[120px] shadow-2xl hover:shadow-3xl">
                         {/* Glow Effect */}
                         <div
-                          className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
+                          className="absolute inset-0 rounded-lg xs:rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
                           style={{ backgroundColor: `${skill.color}30` }}
                         />
 
                         {/* Icon Container */}
-                        <div className="relative z-10 flex flex-col items-center space-y-2 sm:space-y-4">
+                        <div className="relative z-10 flex flex-col items-center space-y-1 xs:space-y-2 sm:space-y-4">
                           {/* Icon */}
-                          <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 relative">
+                          <div className="w-8 h-8 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 relative">
                             {skill.name === "SQL" ? (
                               <div
-                                className="w-full h-full rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-lg group-hover:drop-shadow-lg transition-all duration-300 shadow-lg"
+                                className="w-full h-full rounded-md xs:rounded-lg flex items-center justify-center text-white font-bold text-xs xs:text-sm sm:text-base md:text-lg group-hover:drop-shadow-lg transition-all duration-300 shadow-lg"
                                 style={{
                                   backgroundColor: skill.color,
                                   filter: `drop-shadow(0 0 10px ${skill.color}40)`,
@@ -389,7 +389,7 @@ export function SkillsSection() {
 
                           {/* Name */}
                           <span
-                            className="text-white font-medium text-center group-hover:text-white transition-colors duration-300 text-sm sm:text-base"
+                            className="text-white font-medium text-center group-hover:text-white transition-colors duration-300 text-xs xs:text-sm sm:text-base leading-tight"
                             style={{
                               textShadow: `0 0 10px ${skill.color}20`,
                             }}
@@ -403,27 +403,27 @@ export function SkillsSection() {
                 </div>
 
                 {/* Progress Indicator with Navigation */}
-                <div className="flex justify-center items-center mt-8 sm:mt-12 md:mt-16 space-x-4">
+                <div className="flex justify-center items-center mt-6 xs:mt-8 sm:mt-12 md:mt-16 space-x-3 xs:space-x-4">
                   {/* Previous Arrow */}
                   <button
                     onClick={handlePrevious}
                     disabled={currentCategory === 0}
-                    className="bg-black/50 hover:bg-black/70 disabled:opacity-30 disabled:cursor-not-allowed border border-green-400/50 hover:border-green-400 rounded-full p-2 sm:p-3 transition-all duration-300 backdrop-blur-md"
+                    className="bg-black/50 hover:bg-black/70 disabled:opacity-30 disabled:cursor-not-allowed border border-green-400/50 hover:border-green-400 rounded-full p-1.5 xs:p-2 sm:p-3 transition-all duration-300 backdrop-blur-md"
                     style={{
                       boxShadow: "0 0 15px rgba(0, 255, 136, 0.3)",
                     }}
                     aria-label="Categoría anterior"
                   >
-                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
+                    <ChevronLeft className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-green-400" />
                   </button>
 
                   {/* Progress Dots */}
-                  <div className="flex space-x-2" role="tablist" aria-label="Categorías de habilidades">
+                  <div className="flex space-x-1.5 xs:space-x-2" role="tablist" aria-label="Categorías de habilidades">
                     {skillCategories.map((cat, index) => (
                       <button
                         key={index}
                         onClick={() => navigateToCategory(index)}
-                        className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 ${
+                        className={`w-1.5 h-1.5 xs:w-2 xs:h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 ${
                           index === currentCategory 
                             ? 'bg-green-400 shadow-lg' 
                             : 'bg-white/30 hover:bg-white/50'
@@ -442,18 +442,18 @@ export function SkillsSection() {
                   <button
                     onClick={handleNext}
                     disabled={currentCategory === skillCategories.length - 1}
-                    className="bg-black/50 hover:bg-black/70 disabled:opacity-30 disabled:cursor-not-allowed border border-green-400/50 hover:border-green-400 rounded-full p-2 sm:p-3 transition-all duration-300 backdrop-blur-md"
+                    className="bg-black/50 hover:bg-black/70 disabled:opacity-30 disabled:cursor-not-allowed border border-green-400/50 hover:border-green-400 rounded-full p-1.5 xs:p-2 sm:p-3 transition-all duration-300 backdrop-blur-md"
                     style={{
                       boxShadow: "0 0 15px rgba(0, 255, 136, 0.3)",
                     }}
                     aria-label="Siguiente categoría"
                   >
-                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
+                    <ChevronRight className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-green-400" />
                   </button>
                 </div>
 
                 {/* Autoplay indicator */}
-                <div className="flex justify-center mt-4">
+                <div className="flex justify-center mt-3 xs:mt-4">
                   <div className={`w-1 h-1 rounded-full transition-all duration-300 ${
                     isAutoPlaying ? 'bg-green-400 animate-pulse' : 'bg-white/30'
                   }`} />
@@ -464,9 +464,9 @@ export function SkillsSection() {
         </div>
 
         {/* Ver más button */}
-        <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-40">
+        <div className="absolute bottom-4 xs:bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-40">
           <button
-            className="group bg-black/50 hover:bg-black/70 backdrop-blur-md border border-green-400/50 hover:border-green-400 rounded-full px-6 py-3 sm:px-8 sm:py-4 transition-all duration-300 shadow-2xl hover:shadow-3xl"
+            className="group bg-black/50 hover:bg-black/70 backdrop-blur-md border border-green-400/50 hover:border-green-400 rounded-full px-4 py-2 xs:px-6 xs:py-3 sm:px-8 sm:py-4 transition-all duration-300 shadow-2xl hover:shadow-3xl"
             style={{
               boxShadow: "0 0 20px rgba(0, 255, 136, 0.3)",
             }}
@@ -477,9 +477,9 @@ export function SkillsSection() {
               }
             }}
           >
-            <div className="flex items-center gap-2">
-              <span className="text-white font-medium text-sm sm:text-base">Ver más</span>
-              <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 group-hover:translate-x-1 transition-transform duration-300" />
+            <div className="flex items-center gap-1.5 xs:gap-2">
+              <span className="text-white font-medium text-xs xs:text-sm sm:text-base">Ver más</span>
+              <ExternalLink className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-green-400 group-hover:translate-x-1 transition-transform duration-300" />
             </div>
           </button>
         </div>
