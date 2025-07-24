@@ -1,7 +1,7 @@
 "use client"
 
-import { Code } from "lucide-react"
-import { useEffect, useState, useRef } from "react"
+import { Code, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
+import { useEffect, useState, useRef, useCallback } from "react"
 import Image from "next/image"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -13,50 +13,12 @@ if (typeof window !== "undefined") {
 
 export function SkillsSection() {
   const [isMounted, setIsMounted] = useState(false)
+  const [currentCategory, setCurrentCategory] = useState(0) // Siempre inicia en 0 (Frontend)
+  const [isMobile, setIsMobile] = useState(false)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const containerRef = useRef<HTMLDivElement>(null)
   const sectionsRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  useEffect(() => {
-    if (!isMounted || !containerRef.current || !sectionsRef.current) return
-
-    const container = containerRef.current
-    const sections = sectionsRef.current
-    const skillCategories = sections.querySelectorAll('.skill-category')
-
-    // Set up horizontal scroll
-    const totalWidth = skillCategories.length * 100
-    
-    gsap.set(sections, {
-      width: `${totalWidth}vw`,
-      display: "flex"
-    })
-
-    gsap.set(skillCategories, {
-      width: "100vw"
-    })
-
-    // Simple horizontal scroll animation
-    gsap.to(sections, {
-      x: () => -(totalWidth - 100) + "vw",
-      ease: "none",
-      scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: () => `+=${totalWidth * 10}`,
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-      }
-    })
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
-  }, [isMounted])
+  const autoPlayIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const skillCategories = [
     {
@@ -88,8 +50,249 @@ export function SkillsSection() {
     },
   ]
 
+  useEffect(() => {
+    setIsMounted(true)
+    // Reset to Frontend (index 0) when component mounts
+    setCurrentCategory(0)
+    // Ensure autoplay is enabled from the start
+    setIsAutoPlaying(true)
+    
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Autoplay functionality
+  const startAutoPlay = useCallback(() => {
+    if (autoPlayIntervalRef.current) {
+      clearInterval(autoPlayIntervalRef.current)
+    }
+    
+    autoPlayIntervalRef.current = setInterval(() => {
+      setCurrentCategory(prev => {
+        const nextCategory = prev + 1
+        if (nextCategory >= skillCategories.length) {
+          return 0 // Restart from beginning
+        }
+        return nextCategory
+      })
+    }, 4000) // Change every 4 seconds
+  }, [skillCategories.length])
+
+  const stopAutoPlay = useCallback(() => {
+    if (autoPlayIntervalRef.current) {
+      clearInterval(autoPlayIntervalRef.current)
+      autoPlayIntervalRef.current = null
+    }
+  }, [])
+
+  const pauseAutoPlay = useCallback(() => {
+    setIsAutoPlaying(false)
+    stopAutoPlay()
+  }, [stopAutoPlay])
+
+  const resumeAutoPlay = useCallback(() => {
+    setIsAutoPlaying(true)
+    startAutoPlay()
+  }, [startAutoPlay])
+
+  // Start autoplay when mounted (asegurar que siempre inicie)
+  useEffect(() => {
+    if (isMounted) {
+      // Always start autoplay when component is mounted
+      setIsAutoPlaying(true)
+      startAutoPlay()
+    }
+    
+    return () => {
+      stopAutoPlay()
+    }
+  }, [isMounted, startAutoPlay, stopAutoPlay])
+
+  const navigateToCategory = useCallback((index: number) => {
+    if (index >= 0 && index < skillCategories.length) {
+      setCurrentCategory(index)
+      // Pause autoplay when user manually navigates
+      pauseAutoPlay()
+      // Resume autoplay after 6 seconds of inactivity (reduced from 8)
+      setTimeout(() => {
+        resumeAutoPlay()
+      }, 6000)
+    }
+  }, [skillCategories.length, pauseAutoPlay, resumeAutoPlay])
+
+  const handlePrevious = useCallback((event?: React.MouseEvent) => {
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    const newIndex = currentCategory - 1
+    if (newIndex >= 0) {
+      setCurrentCategory(newIndex)
+      // Pause autoplay when user manually navigates
+      pauseAutoPlay()
+      // Resume autoplay after 6 seconds of inactivity (reduced from 8)
+      setTimeout(() => {
+        resumeAutoPlay()
+      }, 6000)
+    }
+  }, [currentCategory, pauseAutoPlay, resumeAutoPlay])
+
+  const handleNext = useCallback((event?: React.MouseEvent) => {
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    const newIndex = currentCategory + 1
+    if (newIndex < skillCategories.length) {
+      setCurrentCategory(newIndex)
+      // Pause autoplay when user manually navigates
+      pauseAutoPlay()
+      // Resume autoplay after 6 seconds of inactivity (reduced from 8)
+      setTimeout(() => {
+        resumeAutoPlay()
+      }, 6000)
+    }
+  }, [currentCategory, skillCategories.length, pauseAutoPlay, resumeAutoPlay])
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault()
+        handlePrevious()
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault()
+        handleNext()
+      } else if (event.key === ' ') {
+        // Spacebar to toggle autoplay
+        event.preventDefault()
+        if (isAutoPlaying) {
+          pauseAutoPlay()
+        } else {
+          resumeAutoPlay()
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handlePrevious, handleNext, isAutoPlaying, pauseAutoPlay, resumeAutoPlay])
+
+  // Effect to handle category changes in mobile (con animaciones)
+  useEffect(() => {
+    if (!isMounted || !isMobile || !sectionsRef.current) return
+    
+    const sections = sectionsRef.current
+    const skillCategoryElements = sections.querySelectorAll('.skill-category')
+    
+    // Animate out current categories and animate in the new one
+    skillCategoryElements.forEach((category, index) => {
+      if (index === currentCategory) {
+        // Show and animate in the current category
+        gsap.set(category, { display: "flex" })
+        gsap.fromTo(category, 
+          { 
+            opacity: 0, 
+            y: 30,
+            scale: 0.95
+          }, 
+          { 
+            opacity: 1, 
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: "power2.out"
+          }
+        )
+      } else {
+        // Hide other categories with animation
+        gsap.to(category, {
+          opacity: 0,
+          y: -30,
+          scale: 0.95,
+          duration: 0.4,
+          ease: "power2.in",
+          onComplete: () => {
+            gsap.set(category, { display: "none" })
+          }
+        })
+      }
+    })
+  }, [currentCategory, isMobile, isMounted])
+
+  // Effect to handle category changes in desktop
+  useEffect(() => {
+    if (!isMounted || isMobile || !sectionsRef.current) return
+    
+    const sections = sectionsRef.current
+    const skillCategoryElements = sections.querySelectorAll('.skill-category')
+    const totalWidth = skillCategoryElements.length * 100
+    const targetX = -(currentCategory * 100)
+    
+    gsap.to(sections, {
+      x: `${targetX}vw`,
+      duration: 0.8,
+      ease: "power2.inOut"
+    })
+  }, [currentCategory, isMobile, isMounted])
+
+  useEffect(() => {
+    if (!isMounted || !containerRef.current || !sectionsRef.current) return
+
+    const container = containerRef.current
+    const sections = sectionsRef.current
+    const skillCategories = sections.querySelectorAll('.skill-category')
+
+    // Clean up previous ScrollTriggers
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+
+    if (isMobile) {
+      // For mobile, use simple state-based navigation with initial setup
+      gsap.set(sections, { x: 0 })
+      gsap.set(skillCategories, { 
+        display: "none",
+        opacity: 0,
+        y: 0,
+        scale: 1
+      })
+      if (skillCategories[currentCategory]) {
+        gsap.set(skillCategories[currentCategory], { 
+          display: "flex",
+          opacity: 1,
+          y: 0,
+          scale: 1
+        })
+      }
+      return
+    }
+
+    // Desktop: Set up horizontal layout
+    const totalWidth = skillCategories.length * 100
+    
+    gsap.set(sections, {
+      width: `${totalWidth}vw`,
+      display: "flex"
+    })
+
+    gsap.set(skillCategories, {
+      width: "100vw",
+      display: "flex"
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [isMounted, isMobile])
+
   return (
-    <section id="habilidades" className="relative overflow-hidden">
+    <section 
+      id="habilidades" 
+      className="relative overflow-hidden"
+    >
       <div ref={containerRef} className="min-h-screen">
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
@@ -105,57 +308,63 @@ export function SkillsSection() {
           />
         </div>
 
+        {/* Navigation Arrows - now positioned with indicators */}
+        {/* These will be positioned with the progress indicators */}
+
         {/* Horizontal Scroll Container */}
         <div ref={sectionsRef} className="relative z-30 h-screen">
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={category.title}
-              className="skill-category flex items-center justify-center h-full px-6"
+              className={`skill-category flex items-center justify-center h-full px-4 sm:px-6 ${
+                isMobile ? (categoryIndex === currentCategory ? 'block' : 'hidden') : ''
+              }`}
+              style={{ width: isMobile ? '100vw' : undefined }}
             >
-              <div className="container mx-auto text-center">
+              <div className="container mx-auto text-center max-w-6xl">
                 {/* Section Header */}
-                <div className="mb-16">
-                  <div className="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md border border-green-400/50 rounded-full px-6 py-3 mb-8 shadow-2xl"
+                <div className="mb-8 sm:mb-16">
+                  <div className="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md border border-green-400/50 rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-6 sm:mb-8 shadow-2xl"
                     style={{
                       boxShadow: "0 0 30px rgba(0, 255, 136, 0.4)",
                     }}
                   >
-                    <Code className="w-4 h-4 text-green-400" />
-                    <span className="text-sm text-white font-medium">Stack Tecnológico</span>
+                    <Code className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" />
+                    <span className="text-xs sm:text-sm text-white font-medium">Stack Tecnológico</span>
                   </div>
 
-                  <h2 className="text-6xl md:text-8xl font-black mb-6 text-white">
+                  <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6 text-white leading-tight">
                     {category.title}
                   </h2>
 
-                  <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
-                    {categoryIndex === 0 && "Tecnologías frontend para crear interfaces modernas"}
-                    {categoryIndex === 1 && "Herramientas backend para desarrollar APIs robustas"}
+                  <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-xl md:max-w-2xl mx-auto font-light px-4">
+                    {categoryIndex === 0 && "Tecnologías frontend para crear interfaces modernas y responsivas"}
+                    {categoryIndex === 1 && "Herramientas backend para desarrollar APIs robustas y escalables"}
                     {categoryIndex === 2 && "Herramientas y tecnologías de inteligencia artificial"}
                   </p>
                 </div>
 
                 {/* Skills Grid */}
-                <div className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap md:justify-center gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto px-4">
                   {category.skills.map((skill, index) => (
                     <div
                       key={skill.name}
                       className="group relative"
                     >
-                      <div className="relative bg-black/40 backdrop-blur-md border-2 border-white/20 hover:border-white/40 rounded-2xl p-6 transition-all duration-500 min-w-[120px] shadow-2xl hover:shadow-3xl">
+                      <div className="relative bg-black/40 backdrop-blur-md border-2 border-white/20 hover:border-white/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 transition-all duration-500 w-full md:min-w-[120px] shadow-2xl hover:shadow-3xl">
                         {/* Glow Effect */}
                         <div
-                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
+                          className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
                           style={{ backgroundColor: `${skill.color}30` }}
                         />
 
                         {/* Icon Container */}
-                        <div className="relative z-10 flex flex-col items-center space-y-4">
+                        <div className="relative z-10 flex flex-col items-center space-y-2 sm:space-y-4">
                           {/* Icon */}
-                          <div className="w-16 h-16 relative">
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 relative">
                             {skill.name === "SQL" ? (
                               <div
-                                className="w-full h-full rounded-lg flex items-center justify-center text-white font-bold text-lg group-hover:drop-shadow-lg transition-all duration-300 shadow-lg"
+                                className="w-full h-full rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-base md:text-lg group-hover:drop-shadow-lg transition-all duration-300 shadow-lg"
                                 style={{
                                   backgroundColor: skill.color,
                                   filter: `drop-shadow(0 0 10px ${skill.color}40)`,
@@ -180,7 +389,7 @@ export function SkillsSection() {
 
                           {/* Name */}
                           <span
-                            className="text-white font-medium text-center group-hover:text-white transition-colors duration-300"
+                            className="text-white font-medium text-center group-hover:text-white transition-colors duration-300 text-sm sm:text-base"
                             style={{
                               textShadow: `0 0 10px ${skill.color}20`,
                             }}
@@ -193,33 +402,99 @@ export function SkillsSection() {
                   ))}
                 </div>
 
-                {/* Progress Indicator */}
-                <div className="flex justify-center mt-16 space-x-2">
-                  {skillCategories.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === categoryIndex 
-                          ? 'bg-green-400 shadow-lg' 
-                          : 'bg-white/30'
-                      }`}
-                      style={index === categoryIndex ? {
-                        boxShadow: "0 0 10px rgba(0, 255, 136, 0.6)"
-                      } : {}}
-                    />
-                  ))}
+                {/* Progress Indicator with Navigation */}
+                <div className="flex justify-center items-center mt-8 sm:mt-12 md:mt-16 space-x-4">
+                  {/* Previous Arrow */}
+                  <button
+                    onClick={handlePrevious}
+                    disabled={currentCategory === 0}
+                    className="bg-black/50 hover:bg-black/70 disabled:opacity-30 disabled:cursor-not-allowed border border-green-400/50 hover:border-green-400 rounded-full p-2 sm:p-3 transition-all duration-300 backdrop-blur-md"
+                    style={{
+                      boxShadow: "0 0 15px rgba(0, 255, 136, 0.3)",
+                    }}
+                    aria-label="Categoría anterior"
+                  >
+                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
+                  </button>
+
+                  {/* Progress Dots */}
+                  <div className="flex space-x-2" role="tablist" aria-label="Categorías de habilidades">
+                    {skillCategories.map((cat, index) => (
+                      <button
+                        key={index}
+                        onClick={() => navigateToCategory(index)}
+                        className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-400 ${
+                          index === currentCategory 
+                            ? 'bg-green-400 shadow-lg' 
+                            : 'bg-white/30 hover:bg-white/50'
+                        }`}
+                        style={index === currentCategory ? {
+                          boxShadow: "0 0 10px rgba(0, 255, 136, 0.6)"
+                        } : {}}
+                        aria-label={`Ir a categoría ${cat.title}`}
+                        role="tab"
+                        aria-selected={index === currentCategory}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Next Arrow */}
+                  <button
+                    onClick={handleNext}
+                    disabled={currentCategory === skillCategories.length - 1}
+                    className="bg-black/50 hover:bg-black/70 disabled:opacity-30 disabled:cursor-not-allowed border border-green-400/50 hover:border-green-400 rounded-full p-2 sm:p-3 transition-all duration-300 backdrop-blur-md"
+                    style={{
+                      boxShadow: "0 0 15px rgba(0, 255, 136, 0.3)",
+                    }}
+                    aria-label="Siguiente categoría"
+                  >
+                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
+                  </button>
+                </div>
+
+                {/* Autoplay indicator */}
+                <div className="flex justify-center mt-4">
+                  <div className={`w-1 h-1 rounded-full transition-all duration-300 ${
+                    isAutoPlaying ? 'bg-green-400 animate-pulse' : 'bg-white/30'
+                  }`} />
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Scroll Instruction */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40">
-          <div className="text-white/60 text-sm font-medium">
-            Scroll para ver más tecnologías
-          </div>
+        {/* Ver más button */}
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-40">
+          <button
+            className="group bg-black/50 hover:bg-black/70 backdrop-blur-md border border-green-400/50 hover:border-green-400 rounded-full px-6 py-3 sm:px-8 sm:py-4 transition-all duration-300 shadow-2xl hover:shadow-3xl"
+            style={{
+              boxShadow: "0 0 20px rgba(0, 255, 136, 0.3)",
+            }}
+            onClick={() => {
+              const nextSection = document.querySelector('#proyectos, #about, #contacto')
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' })
+              }
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-white font-medium text-sm sm:text-base">Ver más</span>
+              <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
+          </button>
         </div>
+
+        {/* Instructions for desktop */}
+        {!isMobile && (
+          <div className="absolute top-4 right-4 z-40 bg-black/50 backdrop-blur-md border border-green-400/30 rounded-lg px-4 py-2">
+            <p className="text-white/70 text-sm">
+              Usa teclado o botones para navegar
+            </p>
+            <p className="text-white/50 text-xs mt-1">
+              Espacio: pausar/reanudar • Cambio automático cada 4s (activo)
+            </p>
+          </div>
+        )}
       </div>
     </section>
   )

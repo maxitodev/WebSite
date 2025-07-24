@@ -47,26 +47,26 @@ export function HeroSection() {
 
   return (
     <section id="inicio" className="min-h-screen flex items-center justify-center relative overflow-hidden" ref={ref}>
-      {/* Background con video */}
+      {/* Background con video responsivo */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover md:object-center object-[center_20%]"
           style={{
-            filter: "brightness(0.4) contrast(1.2)",
+            filter: "brightness(0.3) contrast(1.2)",
           }}
         >
           <source src="/yo/1.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
       </div>
 
-      {/* Efecto sutil de mouse follow */}
-      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
+      {/* Efecto sutil de mouse follow - solo desktop */}
+      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none hidden md:block">
         <motion.div
           className="absolute w-96 h-96 rounded-full"
           style={{
@@ -97,22 +97,10 @@ export function HeroSection() {
             ease: "easeInOut",
           }}
         />
-        <motion.div
-          className="absolute bottom-32 left-20 w-1 h-16 bg-gradient-to-t from-transparent to-pink-400/40"
-          animate={{
-            scaleY: [1, 1.3, 1],
-            opacity: [0.4, 0.8, 0.4],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-        />
       </div>
 
       <motion.div 
-        className="container mx-auto px-6 text-center relative z-20 max-w-4xl" 
+        className="container mx-auto px-4 sm:px-6 text-center relative z-20 max-w-4xl" 
         style={{ y: ySpring, opacity }}
       >
         {/* Badge profesional */}
@@ -120,20 +108,20 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-3 mb-12"
+          className="inline-flex items-center gap-2 md:gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 md:px-6 md:py-3 mb-8 md:mb-12"
         >
-          <Code2 className="w-4 h-4 text-cyan-400" />
-          <span className="text-sm text-white/90 font-medium tracking-wide">Full Stack Developer</span>
+          <Code2 className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
+          <span className="text-xs md:text-sm text-white/90 font-medium tracking-wide">Full Stack Developer</span>
         </motion.div>
 
         {/* Título principal más limpio */}
         <motion.div
-          className="mb-8"
+          className="mb-6 md:mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-2 md:mb-4">
             <span className="text-white block">Hola, soy</span>
             <span 
               className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent block"
@@ -148,7 +136,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed"
+          className="text-base md:text-lg lg:text-xl text-white/80 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed px-4"
         >
           Desarrollo soluciones web modernas y experiencias digitales que conectan 
           <span className="text-cyan-400"> tecnología</span> con 
@@ -160,12 +148,12 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+          className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-12 md:mb-16"
         >
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-8 py-3 text-base font-medium rounded-xl border-0 shadow-lg shadow-cyan-500/25"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-3 md:px-8 md:py-3 text-sm md:text-base font-medium rounded-xl border-0 shadow-lg shadow-cyan-500/25 w-full sm:w-auto"
               onClick={() => handleSmoothScroll("proyectos")}
             >
               Ver mi trabajo
@@ -177,7 +165,7 @@ export function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="border border-white/20 text-white hover:bg-white/10 px-8 py-3 text-base bg-white/5 backdrop-blur-sm rounded-xl"
+              className="border border-white/20 text-white hover:bg-white/10 px-6 py-3 md:px-8 md:py-3 text-sm md:text-base bg-white/5 backdrop-blur-sm rounded-xl w-full sm:w-auto"
               onClick={() => handleSmoothScroll("contacto")}
             >
               Hablemos
@@ -190,7 +178,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex justify-center space-x-6 mb-20"
+          className="flex justify-center space-x-4 md:space-x-6 mb-12 md:mb-20"
         >
           {[
             { icon: Github, href: "#", label: "GitHub", color: "hover:text-white" },
@@ -207,7 +195,7 @@ export function HeroSection() {
                 className={`text-white/60 ${social.color} transition-all duration-300`} 
                 aria-label={social.label}
               >
-                <social.icon size={24} />
+                <social.icon size={20} className="md:w-6 md:h-6" />
               </Link>
             </motion.div>
           ))}
@@ -222,7 +210,7 @@ export function HeroSection() {
         >
           <span className="text-xs text-white/60 font-medium tracking-widest uppercase">Scroll Down</span>
           <motion.button
-            className="group relative w-10 h-10 bg-gradient-to-b from-cyan-400/20 to-blue-500/20 backdrop-blur-md border border-cyan-400/30 rounded-full hover:from-cyan-400/30 hover:to-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 flex items-center justify-center"
+            className="group relative w-8 h-8 md:w-10 md:h-10 bg-gradient-to-b from-cyan-400/20 to-blue-500/20 backdrop-blur-md border border-cyan-400/30 rounded-full hover:from-cyan-400/30 hover:to-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 flex items-center justify-center"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             animate={{ 
@@ -239,15 +227,15 @@ export function HeroSection() {
                 ease: "easeInOut"
               }
             }}
-            onClick={() => handleSmoothScroll("sobre-mi")}
+            onClick={() => handleSmoothScroll("sobre-mi-servicios")}
           >
             {/* Flecha hacia abajo */}
             <motion.svg
-              width="16"
-              height="16"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
-              className="text-cyan-400"
+              className="text-cyan-400 md:w-4 md:h-4"
               animate={{ y: [0, 2, 0] }}
               transition={{
                 duration: 1.5,
