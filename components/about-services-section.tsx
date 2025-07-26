@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion"
 import { Download, Award, Users, Code, BookOpen, Bot, Globe, BarChart3, Server, Zap, Star, ArrowUpRight, Clock, Eye, ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
@@ -90,52 +91,94 @@ export function AboutServicesSection() {
 
   const services = [
     {
-      title: "Chatbot con IA",
-      description: "Chatbots inteligentes integrados con OpenAI para atención al cliente",
-      icon: <Bot />,
-      price: "Desde $100",
-      delivery: "5-7 días",
-      features: ["OpenAI Integration", "Conversaciones Naturales", "Personalizable", "Multi-plataforma"],
+      title: "Integración de IA a tu App",
+      description: "Agrega chatbots, asistentes y automatización inteligente con IA de última generación.",
+      icon: <Bot />, 
+      price: "Desde $250 USD",
+      delivery: "7-15 días",
+      features: [
+        "Modelos de IA líderes (OpenAI, Google, Azure, etc)",
+        "Automatización Inteligente",
+        "Integración Personalizada",
+        "Soporte Multi-plataforma"
+      ],
       gradient: "from-blue-500 to-cyan-500",
       bgGradient: "from-blue-500/10 to-cyan-500/10",
       borderGradient: "from-blue-400/30 to-cyan-400/30",
       shadowColor: "shadow-blue-500/20",
+      href: "/services/IA",
     },
     {
-      title: "Aplicaciones Web",
-      description: "Aplicaciones web modernas con React, Next.js y tecnologías actuales",
-      icon: <Globe />,
-      price: "Desde $150",
-      delivery: "7-14 días",
-      features: ["React/Next.js", "Responsive Design", "SEO Optimizado", "Performance"],
+      title: "Aplicaciones Web Modernas",
+      description: "Desarrollo de aplicaciones web rápidas, seguras y escalables con React, Next.js y tecnologías actuales.",
+      icon: <Globe />, 
+      price: "Desde $300 USD",
+      delivery: "10-20 días",
+      features: [
+        "React / Next.js",
+        "Responsive Design",
+        "SEO Optimizado",
+        "Performance & Seguridad"
+      ],
       gradient: "from-purple-500 to-pink-500",
       bgGradient: "from-purple-500/10 to-pink-500/10",
       borderGradient: "from-purple-400/30 to-pink-400/30",
       shadowColor: "shadow-purple-500/20",
-    },
-    {
-      title: "Dashboard Empresarial",
-      description: "Dashboards interactivos para visualización de datos y métricas",
-      icon: <BarChart3 />,
-      price: "Desde $200",
-      delivery: "10-15 días",
-      features: ["Visualización de Datos", "Gráficos Interactivos", "Tiempo Real", "Exportación"],
-      gradient: "from-green-500 to-emerald-500",
-      bgGradient: "from-green-500/10 to-emerald-500/10",
-      borderGradient: "from-green-400/30 to-emerald-400/30",
-      shadowColor: "shadow-green-500/20",
+      href: "/services/AppWeb",
     },
     {
       title: "Backend & APIs",
-      description: "APIs robustas con Node.js, Express y bases de datos modernas",
-      icon: <Server />,
-      price: "Desde $120",
-      delivery: "7-12 días",
-      features: ["Node.js/Express", "MongoDB/SQL", "Autenticación", "Documentación"],
+      description: "APIs robustas y escalables con Node.js, Express y bases de datos modernas. Documentación y autenticación incluidas.",
+      icon: <Server />, 
+      price: "Desde $200 USD",
+      delivery: "7-15 días",
+      features: [
+        "Node.js / Express",
+        "MongoDB / SQL",
+        "Autenticación JWT",
+        "Documentación Swagger"
+      ],
       gradient: "from-orange-500 to-red-500",
       bgGradient: "from-orange-500/10 to-red-500/10",
       borderGradient: "from-orange-400/30 to-red-400/30",
       shadowColor: "shadow-orange-500/20",
+      href: "/services/Backend&APIs",
+    },
+    {
+      title: "Cloud Deploy & Hosting",
+      description: "Despliega tu aplicación en las mejores plataformas cloud del mercado con configuración optimizada.",
+      icon: <BarChart3 />, 
+      price: "Desde $80 USD",
+      delivery: "2-5 días",
+      features: [
+        "AWS • Google Cloud • Vercel",
+        "Dominio personalizado + SSL",
+        "CI/CD & Auto-scaling",
+        "Monitoreo y optimización"
+      ],
+      gradient: "from-yellow-500 to-amber-500",
+      bgGradient: "from-yellow-500/10 to-amber-500/10",
+      borderGradient: "from-yellow-400/30 to-amber-400/30",
+      shadowColor: "shadow-yellow-500/20",
+      href: "/services/Deploy&Hosting",
+    },
+    {
+      title: "Web Scraping Inteligente",
+      description: "Extracción automatizada de datos de sitios web para análisis, monitoreo o integración.",
+      icon: <Code />, 
+      price: "Desde $120 USD",
+      delivery: "5-10 días",
+      features: [
+        "Scraping Personalizado",
+        "Entrega en CSV/JSON/API",
+        "Detección de Cambios",
+        "Automatización Programada"
+      ],
+      gradient: "from-green-500 to-emerald-500",
+      bgGradient: "from-green-500/10 to-emerald-500/10",
+      borderGradient: "from-green-400/30 to-emerald-400/30",
+      shadowColor: "shadow-green-500/20",
+      href: "/services/WebScraping",
     },
   ]
 
@@ -249,7 +292,7 @@ export function AboutServicesSection() {
                 <div className="relative bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-1 rounded-2xl backdrop-blur-sm border border-white/20 shadow-xl">
                   <div className="bg-black/50 rounded-2xl overflow-hidden">
                     <Image
-                      src="/images/maximo-profile.jpg"
+                      src="/images/profile.webp"
                       alt="MaxitoDev - Desarrollador Full Stack"
                       width={400}
                       height={500}
@@ -291,18 +334,14 @@ export function AboutServicesSection() {
               {/* Download CV Button */}
               <div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size="lg"
-                    className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-medium border-0 shadow-lg w-full sm:w-auto"
-                    style={{
-                      boxShadow: "0 0 30px rgba(0,212,255,0.4)",
-                    }}
+                  <a
+                    href="/cv"
+                    className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-medium border-0 shadow-lg w-full sm:w-auto rounded-full flex items-center justify-center gap-2 transition-all duration-200"
+                    style={{ boxShadow: "0 0 30px rgba(0,212,255,0.4)" }}
                   >
-                    <span className="relative z-10 flex items-center justify-center">
-                      <Download className="mr-2 w-4 h-4 md:w-5 md:h-5" />
-                      Descargar CV
-                    </span>
-                  </Button>
+                    <Download className="mr-2 w-4 h-4 md:w-5 md:h-5" />
+                    Descargar CV
+                  </a>
                 </motion.div>
               </div>
             </motion.div>
@@ -450,12 +489,13 @@ export function AboutServicesSection() {
 
           {/* Services Grid */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            {services.map((service, index) => (
+            {/* Primera fila: 3 servicios */}
+            {services.slice(0, 3).map((service, index) => (
               <motion.div
                 key={service.title}
                 whileHover={{
@@ -470,7 +510,7 @@ export function AboutServicesSection() {
                 className="group relative"
               >
                 <Card
-                  className={`bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm border-2 border-white/10 hover:border-white/20 transition-all duration-300 h-full relative overflow-hidden ${service.shadowColor} shadow-xl hover:shadow-2xl`}
+                  className={`bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm border-2 border-white/10 hover:border-white/20 transition-all duration-300 h-full relative overflow-hidden ${service.shadowColor} shadow-xl hover:shadow-2xl flex flex-col`}
                 >
                   <motion.div
                     className={`absolute inset-0 bg-gradient-to-r ${service.borderGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg`}
@@ -479,7 +519,7 @@ export function AboutServicesSection() {
                     <div className={`w-full h-full bg-gradient-to-br ${service.bgGradient} rounded-lg`} />
                   </motion.div>
 
-                  <CardContent className="p-4 md:p-6 relative z-10">
+                  <CardContent className="p-4 md:p-6 relative z-10 flex flex-col h-full">
                     <motion.div
                       className="text-white mb-3 md:mb-4 flex justify-center items-center relative"
                       whileHover={{
@@ -496,7 +536,7 @@ export function AboutServicesSection() {
                     </motion.div>
 
                     <h3 className="text-base md:text-lg font-bold mb-2 text-white text-center">{service.title}</h3>
-                    <p className="text-gray-300 mb-3 md:mb-4 font-light text-xs md:text-sm text-center leading-relaxed">{service.description}</p>
+                    <p className="text-gray-300 mb-3 md:mb-4 font-light text-xs md:text-sm text-center leading-relaxed flex-grow">{service.description}</p>
 
                     <div className="flex justify-between items-center mb-3 md:mb-4">
                       <Badge
@@ -520,14 +560,118 @@ export function AboutServicesSection() {
                       ))}
                     </div>
 
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button
-                        size="sm"
-                        className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 text-white border-0 text-xs shadow-lg`}
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-auto">
+                      <Link href={service.href} passHref legacyBehavior>
+                        <Button
+                          asChild
+                          size="sm"
+                          className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 text-white border-0 text-xs shadow-lg`}
+                        >
+                          <a>
+                            <Eye className="w-2 h-2 md:w-3 md:h-3 mr-1" />
+                            Ver más
+                          </a>
+                        </Button>
+                      </Link>
+                    </motion.div>
+
+                    <motion.div
+                      className="absolute top-3 right-3 md:top-4 md:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      whileHover={{ scale: 1.2, rotate: 45 }}
+                    >
+                      <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4 text-gray-300" />
+                    </motion.div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Segunda fila: 2 servicios centrados */}
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-2xl mx-auto mt-6 md:mt-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            {services.slice(3, 5).map((service, index) => (
+              <motion.div
+                key={service.title}
+                whileHover={{
+                  y: -20,
+                  scale: 1.02,
+                  rotateY: 5,
+                  transition: { duration: 0.2 },
+                }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.4 + index * 0.05 }}
+                className="group relative"
+              >
+                <Card
+                  className={`bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm border-2 border-white/10 hover:border-white/20 transition-all duration-300 h-full relative overflow-hidden ${service.shadowColor} shadow-xl hover:shadow-2xl flex flex-col`}
+                >
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-r ${service.borderGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg`}
+                    style={{ padding: "2px" }}
+                  >
+                    <div className={`w-full h-full bg-gradient-to-br ${service.bgGradient} rounded-lg`} />
+                  </motion.div>
+
+                  <CardContent className="p-4 md:p-6 relative z-10 flex flex-col h-full">
+                    <motion.div
+                      className="text-white mb-3 md:mb-4 flex justify-center items-center relative"
+                      whileHover={{
+                        rotate: 360,
+                        scale: 1.2,
+                      }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <div className={`w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-2xl bg-gradient-to-r ${service.gradient} shadow-lg flex items-center justify-center`}>
+                        <div className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 flex items-center justify-center text-white">
+                          {service.icon}
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <h3 className="text-base md:text-lg font-bold mb-2 text-white text-center">{service.title}</h3>
+                    <p className="text-gray-300 mb-3 md:mb-4 font-light text-xs md:text-sm text-center leading-relaxed flex-grow">{service.description}</p>
+
+                    <div className="flex justify-between items-center mb-3 md:mb-4">
+                      <Badge
+                        variant="outline"
+                        className={`bg-gradient-to-r ${service.gradient} text-white border-0 shadow-md text-xs`}
                       >
-                        <Eye className="w-2 h-2 md:w-3 md:h-3 mr-1" />
-                        Ver más
-                      </Button>
+                        {service.price}
+                      </Badge>
+                      <div className="flex items-center gap-1 text-xs text-gray-400">
+                        <Clock className="w-2 h-2 md:w-3 md:h-3" />
+                        <span className="text-xs">{service.delivery}</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1 mb-4 md:mb-6">
+                      {service.features.slice(0, 3).map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2 text-xs text-gray-300">
+                          <Star className="w-2 h-2 text-yellow-400 flex-shrink-0" />
+                          <span className="truncate">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-auto">
+                      <Link href={service.href} passHref legacyBehavior>
+                        <Button
+                          asChild
+                          size="sm"
+                          className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 text-white border-0 text-xs shadow-lg`}
+                        >
+                          <a>
+                            <Eye className="w-2 h-2 md:w-3 md:h-3 mr-1" />
+                            Ver más
+                          </a>
+                        </Button>
+                      </Link>
                     </motion.div>
 
                     <motion.div

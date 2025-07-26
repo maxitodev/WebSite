@@ -27,15 +27,15 @@ export function Footer() {
     ],
     contacto: [
       { name: "Email", href: "mailto:contacto@maxitodev.com", icon: Mail },
-      { name: "WhatsApp", href: "https://wa.me/1234567890", icon: Phone },
-      { name: "LinkedIn", href: "https://linkedin.com/in/maxitodev", icon: Linkedin },
+      { name: "WhatsApp", href: "https://wa.me/5215560606915?text=Hola%20MaxitoDev%2C%20me%20interesa%20trabajar%20contigo%20en%20un%20proyecto.%20%C2%BFPodr%C3%ADamos%20conversar%3F", icon: Phone },
+      { name: "LinkedIn", href: "https://www.linkedin.com/in/maxitodev/", icon: Linkedin },
       { name: "GitHub", href: "https://github.com/maxitodev", icon: Github },
     ],
   }
 
   const socialLinks = [
     { name: "GitHub", href: "https://github.com/maxitodev", icon: Github, color: "#ffffff" },
-    { name: "LinkedIn", href: "https://linkedin.com/in/maxitodev", icon: Linkedin, color: "#0077b5" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/maxitodev/", icon: Linkedin, color: "#0077b5" },
     { name: "Email", href: "mailto:contacto@maxitodev.com", icon: Mail, color: "#ea4335" },
   ]
 
@@ -124,6 +124,8 @@ export function Footer() {
                     <Link
                       href={link.href}
                       className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group"
+                      target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
+                      rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
                     >
                       <link.icon className="w-4 h-4 mr-2" />
                       <span>{link.name}</span>
@@ -183,11 +185,9 @@ export function Footer() {
                   >
                     <Link
                       href={social.href}
-                      className="relative group p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors duration-300 shadow-lg border border-white/10"
                       aria-label={social.name}
-                      style={{
-                        boxShadow: "0 0 15px rgba(255, 255, 255, 0.1)",
-                      }}
+                      target={social.href.startsWith('mailto:') ? '_self' : '_blank'}
+                      rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
                     >
                       <motion.div
                         whileHover={{
@@ -196,7 +196,7 @@ export function Footer() {
                         }}
                         transition={{ duration: 0.3 }}
                       >
-                        <social.icon size={18} className="text-gray-400" />
+                        <social.icon size={22} className="text-gray-400" />
                       </motion.div>
                     </Link>
                   </motion.div>

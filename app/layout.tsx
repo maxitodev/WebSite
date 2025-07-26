@@ -5,6 +5,7 @@ import "./globals.css"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import Script from "next/script"
 
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -25,23 +26,7 @@ export default function RootLayout({
         <SmoothScroll />
         {children}
         
-        {/* Load deferred CSS after page load */}
-        <Script
-          id="load-deferred-css"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = '/styles/deferred.css';
-                link.media = 'print';
-                link.onload = function() { this.media = 'all'; };
-                document.head.appendChild(link);
-              })();
-            `
-          }}
-        />
+        {/* ...existing code... */}
       </body>
     </html>
   )

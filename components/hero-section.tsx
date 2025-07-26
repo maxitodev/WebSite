@@ -193,9 +193,9 @@ export function HeroSection() {
           className="flex justify-center space-x-4 md:space-x-6 mb-12 md:mb-20"
         >
           {[
-            { icon: Github, href: "#", label: "GitHub", color: "hover:text-white" },
-            { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-400" },
-            { icon: Mail, href: "#", label: "Email", color: "hover:text-green-400" },
+            { icon: Github, href: "https://github.com/maxitodev", label: "GitHub", color: "hover:text-white" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/maxitodev/", label: "LinkedIn", color: "hover:text-blue-400" },
+            { icon: Mail, href: "mailto:contacto@maxitodev.com", label: "Email", color: "hover:text-green-400" },
           ].map((social, index) => (
             <motion.div
               key={index}
@@ -206,6 +206,8 @@ export function HeroSection() {
                 href={social.href} 
                 className={`text-white/60 ${social.color} transition-all duration-300`} 
                 aria-label={social.label}
+                target={social.href.startsWith('mailto:') ? '_self' : '_blank'}
+                rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
               >
                 <social.icon size={20} className="md:w-6 md:h-6" />
               </Link>

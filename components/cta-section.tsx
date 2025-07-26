@@ -142,9 +142,9 @@ export function CTASection() {
                       onClick={(e) => {
                         e.preventDefault();
                         if (method.title === "Email") {
-                          window.open("mailto:tu-email@example.com", "_blank");
+                          window.open("mailto:contacto@maxitodev.com", "_blank");
                         } else if (method.title === "WhatsApp") {
-                          window.open("https://wa.me/tunumero", "_blank");
+                          window.open("https://wa.me/5215560606915?text=Hola%20MaxitoDev%2C%20me%20interesa%20trabajar%20contigo%20en%20un%20proyecto.%20%C2%BFPodr%C3%ADamos%20conversar%3F", "_blank");
                         }
                       }}
                     >
