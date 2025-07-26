@@ -128,7 +128,7 @@ export default function IAServicePage() {
     <div className="relative min-h-screen bg-black">
       <div className="fixed md:absolute top-0 left-0 right-0 z-30 p-6">
         <button
-          onClick={() => { window.location.href = '/#servicios'; }}
+          onClick={() => { window.location.href = '/'; }}
           className="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white hover:text-black shadow-2xl transition-all duration-300 ease-out hover:scale-105 hover:shadow-primary/20"
         >
           <svg 
