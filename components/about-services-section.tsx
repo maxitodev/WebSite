@@ -292,7 +292,7 @@ export function AboutServicesSection() {
                 <div className="relative bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-1 rounded-2xl backdrop-blur-sm border border-white/20 shadow-xl">
                   <div className="bg-black/50 rounded-2xl overflow-hidden">
                     <Image
-                      src="/images/profile.webp"
+                      src="/images/Max.png"
                       alt="MaxitoDev - Desarrollador Full Stack"
                       width={400}
                       height={500}
