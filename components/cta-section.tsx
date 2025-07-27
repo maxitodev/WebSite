@@ -157,69 +157,7 @@ export function CTASection() {
           ))}
         </motion.div>
 
-        {/* Main CTA Buttons */}
-        <motion.div 
-          className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Button
-              size="lg"
-              className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 md:px-12 md:py-6 text-lg md:text-xl font-medium border-0 shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 w-full sm:w-auto"
-              onClick={(e) => {
-                e.preventDefault();
-                // Usar Lenis para scroll suave al inicio del formulario o sección de contacto
-                const element = document.getElementById('contacto');
-                if (element && window.lenis) {
-                  window.lenis.scrollTo(element, { offset: -100, duration: 1.5 });
-                } else {
-                  element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-            >
-              <span className="flex items-center justify-center">
-                Iniciar Proyecto
-                <motion.div
-                  animate={{ x: [0, 3, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <ArrowRight className="ml-2 md:ml-3 w-5 h-5 md:w-6 md:h-6" />
-                </motion.div>
-              </span>
-            </Button>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-white/30 text-white hover:text-black hover:bg-white hover:border-white px-8 py-4 md:px-12 md:py-6 text-lg md:text-xl bg-transparent shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 w-full sm:w-auto"
-              onClick={(e) => {
-                e.preventDefault();
-                // Scroll suave a la sección de proyectos usando Lenis
-                const element = document.getElementById('proyectos');
-                if (element && window.lenis) {
-                  window.lenis.scrollTo(element, { offset: -100, duration: 1.5 });
-                } else {
-                  element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-            >
-              <span className="text-center">Ver Portfolio Completo</span>
-            </Button>
-          </motion.div>
-        </motion.div>
+        {/* Main CTA Buttons removed as requested */}
 
         {/* Additional Info */}
         <motion.div 
