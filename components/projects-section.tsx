@@ -28,6 +28,7 @@ export function ProjectsSection() {
       gradient: "from-blue-500 to-cyan-500",
       bgGradient: "from-blue-500/10 to-cyan-500/10",
       updated: "Hace 1 semana",
+      codeUrl: "https://github.com/maxitodev/MaxcomGames",
     },
     {
       title: "PerfilUAM",
@@ -39,6 +40,7 @@ export function ProjectsSection() {
       gradient: "from-purple-500 to-pink-500",
       bgGradient: "from-purple-500/10 to-pink-500/10",
       updated: "Hace 3 semanas",
+      codeUrl: "https://github.com/maxitodev/PerfilUAM",
     },
     {
       title: "Simposio",
@@ -50,6 +52,7 @@ export function ProjectsSection() {
       gradient: "from-green-500 to-emerald-500",
       bgGradient: "from-green-500/10 to-emerald-500/10",
       updated: "Hace 3 semanas",
+      codeUrl: "https://github.com/maxitodev/Simposio",
     },
     {
       title: "DonaUAM",
@@ -61,6 +64,7 @@ export function ProjectsSection() {
       gradient: "from-orange-500 to-red-500",
       bgGradient: "from-orange-500/10 to-red-500/10",
       updated: "Hace 3 semanas",
+      codeUrl: "https://github.com/maxitodev/DonaUAM",
     },
     {
       title: "GestorEscolar",
@@ -72,6 +76,7 @@ export function ProjectsSection() {
       gradient: "from-cyan-500 to-blue-500",
       bgGradient: "from-cyan-500/10 to-blue-500/10",
       updated: "Mayo 25",
+      codeUrl: "https://github.com/maxitodev/GestorEscolar",
     },
     {
       title: "SistemaFinanciero",
@@ -83,6 +88,7 @@ export function ProjectsSection() {
       gradient: "from-violet-500 to-purple-500",
       bgGradient: "from-violet-500/10 to-purple-500/10",
       updated: "Mayo 25",
+      codeUrl: "https://github.com/maxitodev/SistemaFinanciero",
     },
     {
       title: "CalibreConductor",
@@ -94,6 +100,7 @@ export function ProjectsSection() {
       gradient: "from-teal-500 to-cyan-500",
       bgGradient: "from-teal-500/10 to-cyan-500/10",
       updated: "Abril 15",
+      codeUrl: "https://github.com/maxitodev/CalibredeConductor",
     },
   ]
 
@@ -344,14 +351,23 @@ export function ProjectsSection() {
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="flex gap-3">
                       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="text-white border-white bg-transparent hover:bg-white hover:text-black"
+                        <a
+                          href={project.codeUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          tabIndex={0}
+                          aria-label={`Ver código de ${project.title} en GitHub`}
+                          style={{ textDecoration: "none" }}
                         >
-                          <Github className="w-4 h-4 mr-2" />
-                          Código
-                        </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="text-white border-white bg-transparent hover:bg-white hover:text-black"
+                          >
+                            <Github className="w-4 h-4 mr-2" />
+                            Código
+                          </Button>
+                        </a>
                       </motion.div>
                       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                         <Button
@@ -429,17 +445,26 @@ export function ProjectsSection() {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <motion.div
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-purple-400/30 rounded-full px-8 py-4 shadow-lg"
-            whileHover={{ scale: 1.05, y: -5 }}
-            transition={{ duration: 0.3 }}
-            style={{
-              boxShadow: "0 0 20px rgba(139, 92, 246, 0.2)",
-            }}
+          <a
+            href="https://github.com/maxitodev"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={0}
+            aria-label="Ver todos los proyectos en GitHub"
+            style={{ textDecoration: "none" }}
           >
-            <Github className="w-5 h-5 text-purple-400" />
-            <span className="text-white font-medium">Ver todos los proyectos en GitHub</span>
-          </motion.div>
+            <motion.div
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-purple-400/30 rounded-full px-8 py-4 shadow-lg cursor-pointer"
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                boxShadow: "0 0 20px rgba(139, 92, 246, 0.2)",
+              }}
+            >
+              <Github className="w-5 h-5 text-purple-400" />
+              <span className="text-white font-medium">Ver todos los proyectos en GitHub</span>
+            </motion.div>
+          </a>
         </div>
       </div>
     </section>

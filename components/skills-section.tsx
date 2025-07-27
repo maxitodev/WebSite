@@ -492,10 +492,7 @@ export function SkillsSection() {
               boxShadow: "0 0 20px rgba(0, 255, 136, 0.3)",
             }}
             onClick={() => {
-              const nextSection = document.querySelector('#proyectos, #about, #contacto')
-              if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' })
-              }
+              window.location.href = '/skills'
             }}
           >
             <div className="flex items-center gap-1.5 xs:gap-2">
