@@ -13,18 +13,6 @@ export function Footer() {
   }, [])
 
   const footerLinks = {
-    navegacion: [
-      { name: "Inicio", href: "/" },
-      { name: "Sobre Mí", href: "/sobre-mi" },
-      { name: "Servicios", href: "/servicios" },
-      { name: "Proyectos", href: "/proyectos" },
-    ],
-    servicios: [
-      { name: "Chatbot con IA", href: "/servicios#chatbot" },
-      { name: "Aplicaciones Web", href: "/servicios#web-apps" },
-      { name: "Dashboard Empresarial", href: "/servicios#dashboard" },
-      { name: "Backend & APIs", href: "/servicios#backend" },
-    ],
     contacto: [
       { name: "Email", href: "mailto:contacto@maxitodev.com", icon: Mail },
       { name: "WhatsApp", href: "https://wa.me/5215560606915?text=Hola%20MaxitoDev%2C%20me%20interesa%20trabajar%20contigo%20en%20un%20proyecto.%20%C2%BFPodr%C3%ADamos%20conversar%3F", icon: Phone },
@@ -50,7 +38,7 @@ export function Footer() {
       <div className="relative z-10">
         {/* Main Footer Content */}
         <div className="container mx-auto px-6 py-16">
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-1">
               <motion.div
@@ -77,42 +65,6 @@ export function Footer() {
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                 <span className="text-sm">Disponible para proyectos</span>
               </div>
-            </div>
-
-            {/* Navigation Links */}
-            <div>
-              <h3 className="text-white font-semibold mb-6">Navegación</h3>
-              <ul className="space-y-3">
-                {footerLinks.navegacion.map((link, index) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group"
-                    >
-                      <span>{link.name}</span>
-                      <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Services Links */}
-            <div>
-              <h3 className="text-white font-semibold mb-6">Servicios</h3>
-              <ul className="space-y-3">
-                {footerLinks.servicios.map((link, index) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center group"
-                    >
-                      <span>{link.name}</span>
-                      <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* Contact Info */}
