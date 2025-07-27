@@ -18,102 +18,100 @@ export function ProjectsSection() {
 
   const projects = [
     {
-      title: "MaxcomGames",
-      description:
-        "Sistema E-Commerce completo para venta de videojuegos con carrito de compras y gestión de inventario",
-      image: "/projects/maxcomgames.png",
-      tech: ["JavaScript", "Node.js", "Express", "MongoDB"],
-      status: "Completado",
-      category: "E-Commerce",
-      gradient: "from-blue-500 to-cyan-500",
-      bgGradient: "from-blue-500/10 to-cyan-500/10",
-      updated: "Hace 1 semana",
-      codeUrl: "https://github.com/maxitodev/MaxcomGames",
-    },
-    {
       title: "PerfilUAM",
       description: "Sistema de Perfiles para Estudiantes de la Unidad UAM Cuajimalpa con gestión de datos académicos",
       image: "/projects/perfiluam.png",
       tech: ["TypeScript", "React", "Node.js", "MongoDB"],
-      status: "Completado",
+      
       category: "Sistema Académico",
       gradient: "from-purple-500 to-pink-500",
       bgGradient: "from-purple-500/10 to-pink-500/10",
-      updated: "Hace 3 semanas",
+      
       codeUrl: "https://github.com/maxitodev/PerfilUAM",
-    },
-    {
-      title: "Simposio",
-      description: "Presentación Web interactiva para eventos académicos con diseño moderno y responsive",
-      image: "/projects/simposio.png",
-      tech: ["TypeScript", "React", "Tailwind CSS"],
-      status: "Completado",
-      category: "Presentación Web",
-      gradient: "from-green-500 to-emerald-500",
-      bgGradient: "from-green-500/10 to-emerald-500/10",
-      updated: "Hace 3 semanas",
-      codeUrl: "https://github.com/maxitodev/Simposio",
+      demoPath: "/projects/PerfilUAM",
     },
     {
       title: "DonaUAM",
       description: "Sistema de Donativos UAM para gestionar contribuciones y donaciones de la comunidad universitaria",
       image: "/projects/donauam.png",
       tech: ["JavaScript", "Node.js", "Express", "MongoDB"],
-      status: "Completado",
+      
       category: "Sistema Social",
       gradient: "from-orange-500 to-red-500",
       bgGradient: "from-orange-500/10 to-red-500/10",
-      updated: "Hace 3 semanas",
+      
       codeUrl: "https://github.com/maxitodev/DonaUAM",
+      demoPath: "/projects/DonaUAM",
+    },
+    {
+      title: "Simposio",
+      description: "Presentación Web interactiva para eventos académicos con diseño moderno y responsive",
+      image: "/projects/simposio.png",
+      tech: ["TypeScript", "React", "Tailwind CSS"],
+      
+      category: "Presentación Web",
+      gradient: "from-green-500 to-emerald-500",
+      bgGradient: "from-green-500/10 to-emerald-500/10",
+      
+      codeUrl: "https://github.com/maxitodev/Simposio",
+      demoPath: "/projects/Simposio",
+    },
+    {
+      title: "MaxcomGames",
+      description:
+      "Sistema E-Commerce completo para venta de videojuegos con carrito de compras y gestión de inventario",
+      image: "/projects/maxcomgames.png",
+      tech: ["JavaScript", "Node.js", "Express", "MongoDB"],
+      
+      category: "E-Commerce",
+      gradient: "from-blue-500 to-cyan-500",
+      bgGradient: "from-blue-500/10 to-cyan-500/10",
+      
+      codeUrl: "https://github.com/maxitodev/MaxcomGames",
+      demoPath: "/projects/MaxcomGames",
     },
     {
       title: "GestorEscolar",
       description: "Sistema de gestión escolar completo para administrar estudiantes, calificaciones y horarios",
       image: "/projects/gestorescolar.png",
       tech: ["JavaScript", "React", "Node.js", "MongoDB"],
-      status: "Completado",
+      
       category: "Sistema Educativo",
       gradient: "from-cyan-500 to-blue-500",
       bgGradient: "from-cyan-500/10 to-blue-500/10",
-      updated: "Mayo 25",
+      
       codeUrl: "https://github.com/maxitodev/GestorEscolar",
+      demoPath: "/projects/GestorEscolar",
     },
     {
       title: "SistemaFinanciero",
       description: "Herramienta para cálculos macroeconómicos con análisis de datos financieros y reportes",
       image: "/projects/sistemafinanciero.png",
       tech: ["JavaScript", "React", "Chart.js", "Node.js"],
-      status: "Completado",
+      
       category: "Finanzas",
       gradient: "from-violet-500 to-purple-500",
       bgGradient: "from-violet-500/10 to-purple-500/10",
-      updated: "Mayo 25",
+      
       codeUrl: "https://github.com/maxitodev/SistemaFinanciero",
+      demoPath: "/projects/SistemaFinanciero",
     },
     {
       title: "CalibreConductor",
       description: "Sistema de calibración y gestión para conductores con análisis de rendimiento y métricas",
       image: "/projects/calibreconductor.png",
       tech: ["JavaScript", "React", "Node.js", "Express"],
-      status: "Completado",
+      
       category: "Sistema de Gestión",
       gradient: "from-teal-500 to-cyan-500",
       bgGradient: "from-teal-500/10 to-cyan-500/10",
-      updated: "Abril 15",
+      
       codeUrl: "https://github.com/maxitodev/CalibredeConductor",
+      demoPath: "/projects/CalibreConductor",
     },
   ]
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "Completado":
-        return "bg-green-500/20 text-green-400 border-green-400/30"
-      case "En Desarrollo":
-        return "bg-blue-500/20 text-blue-400 border-blue-400/30"
-      default:
-        return "bg-gray-500/20 text-gray-400 border-gray-400/30"
-    }
-  }
+
 
   return (
     <section id="proyectos" className="min-h-[120vh] py-20 relative overflow-hidden bg-black">
@@ -330,7 +328,7 @@ export function ProjectsSection() {
               className="group relative"
             >
               <Card
-                className={`bg-gradient-to-br ${project.bgGradient} backdrop-blur-sm border-2 border-white/10 hover:border-white/20 transition-all duration-500 h-full relative overflow-hidden shadow-xl hover:shadow-2xl`}
+                className={`bg-gradient-to-br ${project.bgGradient} backdrop-blur-sm border-2 border-white/10 hover:border-white/20 transition-all duration-500 h-full relative overflow-hidden shadow-xl hover:shadow-2xl flex flex-col`}
               >
                 {/* Image Container */}
                 <div className="aspect-video bg-gray-900 relative overflow-hidden">
@@ -370,24 +368,26 @@ export function ProjectsSection() {
                         </a>
                       </motion.div>
                       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="text-white border-white bg-transparent hover:bg-white hover:text-black"
+                        <a
+                          href={project.demoPath}
+                          tabIndex={0}
+                          aria-label={`Ver demo de ${project.title}`}
+                          style={{ textDecoration: "none" }}
                         >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Demo
-                        </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="text-white border-white bg-transparent hover:bg-white hover:text-black"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            Demo
+                          </Button>
+                        </a>
                       </motion.div>
                     </div>
                   </div>
 
-                  {/* Status Badge */}
-                  <div className="absolute top-4 left-4">
-                    <Badge variant="outline" className={`${getStatusColor(project.status)} backdrop-blur-sm shadow-lg`}>
-                      {project.status}
-                    </Badge>
-                  </div>
+
 
                   {/* Category Badge */}
                   <div className="absolute top-4 right-4">
@@ -400,25 +400,21 @@ export function ProjectsSection() {
                   </div>
                 </div>
 
-                <CardContent className="p-6 relative z-10">
-                  {/* Title */}
-                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-white transition-colors duration-300">
-                    {project.title}
-                  </h3>
+                <CardContent className="p-6 relative z-10 flex flex-col flex-1 justify-between">
+                  <div>
+                    {/* Title */}
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-white transition-colors duration-300">
+                      {project.title}
+                    </h3>
 
-                  {/* Description */}
-                  <p className="text-gray-300 mb-4 font-light group-hover:text-gray-200 transition-colors duration-300">
-                    {project.description}
-                  </p>
-
-                  {/* Updated Info */}
-                  <div className="flex items-center gap-2 mb-4 text-xs text-gray-400">
-                    <Calendar className="w-3 h-3" />
-                    <span>Actualizado {project.updated}</span>
+                    {/* Description */}
+                    <p className="text-gray-300 mb-4 font-light group-hover:text-gray-200 transition-colors duration-300">
+                      {project.description}
+                    </p>
                   </div>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-4 mt-auto">
                     {project.tech.map((tech) => (
                       <Badge
                         key={tech}
