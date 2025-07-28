@@ -9,7 +9,7 @@ import Script from "next/script"
 const inter = Inter({ subsets: ["latin"] })
 
   export const metadata: Metadata = {
-    title: "MaxitoDev - WebDeveloper",
+    title: "MaxitoDev",
     description: "Portfolio de MaxitoDev - Desarrollador Full Stack especializado en React, Next.js, Node.js y tecnologías modernas",
     generator: 'v0.dev',
     icons: {

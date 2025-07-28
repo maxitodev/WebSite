@@ -15,7 +15,7 @@ export default function Portfolio() {
       {/* Hero - 100vh */}
       <HeroSection />
 
-      {/* About & Services Combined - 100vh with scroll transition */}
+      {/* About & Services Combined - 100vh*/}
       <AboutServicesSection />
 
       {/* Skills - 80vh */}

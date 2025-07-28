@@ -115,23 +115,24 @@ export default function DeployHostingServicePage() {
   return (
     <div className="relative min-h-screen bg-black">
       <div className="fixed md:absolute top-0 left-0 right-0 z-30 p-6">
-        <button
-          onClick={() => { window.location.href = '/'; }}
-          className="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white hover:text-black shadow-2xl transition-all duration-300 ease-out hover:scale-105 hover:shadow-primary/20"
+        <a
+          href="/#servicios"
+          className="group flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur border border-white/20 text-white hover:bg-white hover:text-black shadow-lg transition-all duration-200 ease-out hover:scale-105 hover:shadow-primary/20 text-sm font-medium"
+          style={{ maxWidth: 'fit-content' }}
         >
           <svg 
-            width="20" 
-            height="20" 
+            width="16" 
+            height="16" 
             fill="none" 
             viewBox="0 0 24 24" 
             stroke="currentColor" 
-            strokeWidth="2.5" 
-            className="transition-transform duration-300 group-hover:-translate-x-1"
+            strokeWidth="2.2" 
+            className="transition-transform duration-200 group-hover:-translate-x-0.5"
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
-          <span className="font-medium">Regresar</span>
-        </button>
+          <span>Regresar</span>
+        </a>
       </div>
       <div className="pt-24 md:pt-20">
         <ServiceLayout

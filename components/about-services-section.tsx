@@ -144,6 +144,9 @@ export function AboutServicesSection() {
       shadowColor: "shadow-orange-500/20",
       href: "/services/Backend&APIs",
     },
+
+  ]
+  {/* MÁS SERVICIOS
     {
       title: "Cloud Deploy & Hosting",
       description: "Despliega tu aplicación en las mejores plataformas cloud del mercado con configuración optimizada.",
@@ -162,26 +165,25 @@ export function AboutServicesSection() {
       shadowColor: "shadow-yellow-500/20",
       href: "/services/Deploy&Hosting",
     },
-    {
-      title: "Web Scraping Inteligente",
-      description: "Extracción automatizada de datos de sitios web para análisis, monitoreo o integración.",
-      icon: <Code />, 
-      price: "Desde $120 USD",
-      delivery: "5-10 días",
-      features: [
-        "Scraping Personalizado",
-        "Entrega en CSV/JSON/API",
-        "Detección de Cambios",
-        "Automatización Programada"
-      ],
-      gradient: "from-green-500 to-emerald-500",
-      bgGradient: "from-green-500/10 to-emerald-500/10",
-      borderGradient: "from-green-400/30 to-emerald-400/30",
-      shadowColor: "shadow-green-500/20",
-      href: "/services/WebScraping",
-    },
-  ]
 
+    title: "Web Scraping Inteligente",
+    description: "Extracción automatizada de datos de sitios web para análisis, monitoreo o integración.",
+    icon: <Code />, 
+    price: "Desde $120 USD",
+    delivery: "5-10 días",
+    features: [
+      "Scraping Personalizado",
+      "Entrega en CSV/JSON/API",
+      "Detección de Cambios",
+      "Automatización Programada"
+    ],
+    gradient: "from-green-500 to-emerald-500",
+    bgGradient: "from-green-500/10 to-emerald-500/10",
+    borderGradient: "from-green-400/30 to-emerald-400/30",
+    shadowColor: "shadow-green-500/20",
+    href: "/services/WebScraping",
+  },*/}
+  
   useEffect(() => {
     
     if (window.lenis) {
